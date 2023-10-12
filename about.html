@@ -17,7 +17,7 @@
 
     <!-- =================== END OF SCRIPTS ================= -->
 
-    <title>دربارۀ ما</title>
+    <title>BookToGo</title>
   </head>
 
   <body>
@@ -38,12 +38,14 @@
             <i class="fa-solid fa-close"></i>
           </ul>
         </div>
+
         <a href="index.html">
           <div class="logo-section">
             <img src="images/logo.png" alt="logo" class="nav-logo" />
             <span>بوک توگو </span>
           </div></a
         >
+
         <ul class="nav-list">
           <li class="nav-item"><a href="index.html">خانه</a></li>
           <li class="nav-item"><a href="about.html"> دربارۀ ما</a></li>
@@ -51,14 +53,14 @@
         </ul>
 
         <div class="nav-icons">
-          <div class="search-section">
+          <form class="search-section">
             <input
               type="text"
               id="search-field"
               placeholder="هر کتابی که میخوای رو جست‌وجو کن"
             />
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
-          </div>
+          </form>
           <i class="dark-light-mode fa-solid fa-lightbulb"></i>
           <div class="user-login">
             <i class="user-login-icon fa-solid fa-user"></i>
@@ -74,6 +76,10 @@
               <small class="password"></small>
               <button type="submit" class="login-button">وارد شو</button>
             </form>
+          </div>
+          <div class="cart-section">
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+            <span id="cart-amount">0</span>
           </div>
         </div>
       </div>
@@ -103,32 +109,29 @@
             <span class="line"></span>
             <h1>کتاب‌های پرطرفدار</h1>
           </div>
-
           <div class="books">
             <div class="prev-button-section">
-              <i class="fa-solid fa-chevron-right prev-button"></i>
+              <i class="fa-solid fa-chevron-right prev-button arrow"></i>
             </div>
             <div class="popular-book-wrapper"></div>
-
             <div class="next-button-section">
-              <i class="fa-solid fa-chevron-left next-button"></i>
+              <i class="fa-solid fa-chevron-left next-button arrow"></i>
             </div>
           </div>
         </div>
+
         <div class="new-books">
           <div class="book-section-title">
             <span class="line"></span>
             <h1>کتاب‌های جدید</h1>
           </div>
-
           <div class="books">
             <div class="prev-button-section">
-              <i class="fa-solid fa-chevron-right prev-button"></i>
+              <i class="fa-solid fa-chevron-right prev-button arrow"></i>
             </div>
             <div class="new-book-wrapper"></div>
-
             <div class="next-button-section">
-              <i class="fa-solid fa-chevron-left next-button"></i>
+              <i class="fa-solid fa-chevron-left next-button arrow"></i>
             </div>
           </div>
         </div>

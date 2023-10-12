@@ -54,14 +54,14 @@
         </ul>
 
         <div class="nav-icons">
-          <div class="search-section">
+          <form class="search-section">
             <input
               type="text"
               id="search-field"
               placeholder="هر کتابی که میخوای رو جست‌وجو کن"
             />
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
-          </div>
+          </form>
           <i class="dark-light-mode fa-solid fa-lightbulb"></i>
           <div class="user-login">
             <i class="user-login-icon fa-solid fa-user"></i>
@@ -79,12 +79,13 @@
             </form>
           </div>
           <div class="cart-section">
-            <i class="fas fa-shopping-cart"></i>
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
             <span id="cart-amount">0</span>
           </div>
         </div>
       </div>
     </nav>
+
     <div class="container">
       <div id="book-cart">
         <ul id="cart-books">
@@ -96,6 +97,8 @@
           </div>
         </ul>
       </div>
+      <button id="delete-all-books">حذف همه</button>
+
       <div id="empty-note">
         <p>سبد خرید شما خالی است</p>
       </div>
@@ -140,7 +143,6 @@
           </div>
         </div>
       </div>
-      <div class="remove-book"></div>
 
       <!-- =================== FOOTER SECTION ================= -->
       <footer>
