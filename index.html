@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- =================== LINKS ================= -->
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="images/logo.png" />
+
+    <!-- =================== SCRIPTS ================= -->
+    <script
+      src="https://kit.fontawesome.com/6a94ab363b.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- =================== END OF SCRIPTS ================= -->
+
+    <title>BookToGo</title>
+  </head>
+
+  <body>
+    <div class="overlay"></div>
+    <!-- =================== NAVIGATION ================= -->
+    <nav>
+      <div class="navigation">
+        <div class="burger-menu">
+          <i class="fa-solid fa-bars"></i>
+          <ul class="burger-menu-list">
+            <li class="burger-menu-item"><a href="index.html">خانه</a></li>
+            <li class="burger-menu-item">
+              <a href="about.html"> دربارۀ ما</a>
+            </li>
+            <li class="burger-menu-item">
+              <a href="contact.html">تماس با ما</a>
+            </li>
+            <i class="fa-solid fa-close"></i>
+          </ul>
+        </div>
+
+        <a href="index.html">
+          <div class="logo-section">
+            <img src="images/logo.png" alt="logo" class="nav-logo" />
+            <span>بوک توگو </span>
+          </div></a
+        >
+
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html">خانه</a></li>
+          <li class="nav-item"><a href="about.html"> دربارۀ ما</a></li>
+          <li class="nav-item"><a href="contact.html">تماس با ما</a></li>
+        </ul>
+
+        <div class="nav-icons">
+          <form class="search-section">
+            <input
+              type="text"
+              id="search-field"
+              placeholder="هر کتابی که میخوای رو جست‌وجو کن"
+            />
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          </form>
+          <i class="dark-light-mode fa-solid fa-lightbulb"></i>
+          <div class="user-login">
+            <i class="user-login-icon fa-solid fa-user"></i>
+
+            <form action="" id="login-form">
+              <input type="text" id="login-email" placeholder="ایمیل" />
+              <small class="email"></small>
+              <input
+                type="password"
+                id="login-password"
+                placeholder="رمز عبور"
+              />
+              <small class="password"></small>
+              <button type="submit" class="login-button">وارد شو</button>
+            </form>
+          </div>
+          <div class="cart-section">
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+            <span id="cart-amount">0</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- =================== HERO SECTION ================= -->
+      <div class="hero-section">
+        <!-- img section -->
+        <img src="images/circle.png" id="circle-img" alt="" />
+
+        <div class="right-section">
+          <img src="images/hero.png" alt="" />
+        </div>
+        <!-- text section -->
+        <div class="left-section">
+          <h1 class="hero-title">هر کتابی که بخوای اینجا هست ;)</h1>
+          <h3 class="hero-desc">
+            اینجا هر کتابی که خواستی رو میتونی قرض بگیری و کتاب‌های خودت رو هم
+            میتونی به بقیه قرض بدی
+          </h3>
+          <div class="signup-field">
+            <input
+              type="text"
+              id="hero-email"
+              placeholder="ایمیلت رو وارد کن"
+            />
+            <button class="call-to-action">عضو شو</button>
+            <small></small>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================== CARDS SECTION ================= -->
+      <div class="intro-cards">
+        <div class="cards">
+          <div class="card card-1">
+            <img src="images/speed.png" alt="" />
+            <span>خیلی زود میتونی کتابی که میخوای رو پیدا کنی</span>
+          </div>
+          <div class="card card-2">
+            <img src="images/custom.png" alt="" />
+            <span>میتونی پروفایلت رو به دلخواه خودت ایجاد کنی</span>
+          </div>
+          <div class="card card-3">
+            <img src="images/devices.png" alt="" />
+            <span
+              >با هر وسیله‌ای که داری میتونی از امکانات سایت ما استفاده
+              کنی</span
+            >
+          </div>
+          <div class="card card-4">
+            <img src="images/search.png" alt="" />
+            <span>فقط کافیه چیزی که میخوای رو جست‌وجو کنی!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================== BOOK SECTION ================= -->
+      <div class="book-section">
+        <div class="popular-books">
+          <div class="book-section-title">
+            <span class="line"></span>
+            <h1>کتاب‌های پرطرفدار</h1>
+          </div>
+          <div class="books">
+            <div class="prev-button-section">
+              <i class="fa-solid fa-chevron-right prev-button arrow"></i>
+            </div>
+            <div class="popular-book-wrapper"></div>
+            <div class="next-button-section">
+              <i class="fa-solid fa-chevron-left next-button arrow"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="new-books">
+          <div class="book-section-title">
+            <span class="line"></span>
+            <h1>کتاب‌های جدید</h1>
+          </div>
+          <div class="books">
+            <div class="prev-button-section">
+              <i class="fa-solid fa-chevron-right prev-button arrow"></i>
+            </div>
+            <div class="new-book-wrapper"></div>
+            <div class="next-button-section">
+              <i class="fa-solid fa-chevron-left next-button arrow"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================== FOOTER SECTION ================= -->
+      <footer>
+        <div class="useful-links">
+          <div>
+            <a href="">درباره ما</a>
+            <a href="">فرصت شغلی </a>
+            <a href="">نشانی </a>
+          </div>
+          <div>
+            <a href="">راهنمای سایت </a>
+            <a href="">طریقۀ ارسال</a>
+            <a href="">مقررات</a>
+          </div>
+          <div>
+            <a href="">تماس با ما </a>
+            <a href="">سؤالات متداول </a>
+          </div>
+          <img src="images/اینماد.png" alt=" اینماد" class="e-namad" />
+        </div>
+        <div class="footer-section-2">
+          <div class="footer-intro">
+            این سایت برای راحت شدن تبادل کتاب در سال 1402 ایجاد شده و در حال
+            ارتقا میباشد
+          </div>
+          <div class="copyright">
+            تمامی حقوق متعلق به <a href="index.html">وبسایت</a> است
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="main.js"></script>
+    <script src="homePage.js"></script>
+  </body>
+</html>
+
