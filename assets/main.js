@@ -454,14 +454,14 @@ function generateBooksInDOM(array, where, type) {
 
     where.innerHTML += `
       <div class="book" id="${id}">
-      <a href="book-details.html?id=${id}&type=${type}"  draggable="false"> 
+      <a href="book-details.html?id=${id}&type=${type}" draggable="false"> 
       <img src="images/books/${img}" alt="" draggable="false"/>
       </a>
         <div class="book-desc">
           <span class="book-title">${title}</span>
           <div class="price">${price.toLocaleString()}</div>
           <div class="stars">${stars}</div>
-          <a href="book-details.html?id=${id}&type=${type}"  class="book-details">اطلاعات بیشتر</a>
+          <a href="book-details.html?id=${id}&type=${type}" class="book-details">اطلاعات بیشتر</a>
         </div>
       </div>
     `;
@@ -569,8 +569,9 @@ addEventListener("DOMContentLoaded", () => {
   sliderFunction(popularBooks);
   sliderFunction(newBooks);
   // Book Hover Effect
+  const allBooks = document.querySelectorAll(".book");
+
   function bookHoverEffect() {
-    const allBooks = document.querySelectorAll(".book");
     allBooks.forEach((book) => {
       book.addEventListener("mouseenter", (e) => {
         e.target.classList.add("selected");
@@ -580,10 +581,13 @@ addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-  bookHoverEffect();
+  addEventListener("resize", () => {
+    if (window.innerWidth > 700) {
+      bookHoverEffect();
+    } 
+  });
 });
 const urlParams = new URLSearchParams(window.location.search);
-
 function cartBlueCircle() {
   // hide or show the blue circle on the cart icon
   if (cartIcon.innerHTML == 0) {

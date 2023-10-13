@@ -893,6 +893,9 @@ footer {
   .book-section-title h1 {
     font-size: 1.1rem;
   }
+  .books:hover .book:not(.selected) {
+    filter: brightness(1);
+  }
   .intro-cards {
     font-size: 1rem;
   }
