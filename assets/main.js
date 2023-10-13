@@ -454,14 +454,14 @@ function generateBooksInDOM(array, where, type) {
 
     where.innerHTML += `
       <div class="book" id="${id}">
-      <a href="book-details.html?id=${id}&type=${type}" target="_blank" draggable="false"> 
+      <a href="book-details.html?id=${id}&type=${type}"  draggable="false"> 
       <img src="images/books/${img}" alt="" draggable="false"/>
       </a>
         <div class="book-desc">
           <span class="book-title">${title}</span>
           <div class="price">${price.toLocaleString()}</div>
           <div class="stars">${stars}</div>
-          <a href="book-details.html?id=${id}&type=${type}" target="_blank" class="book-details">اطلاعات بیشتر</a>
+          <a href="book-details.html?id=${id}&type=${type}"  class="book-details">اطلاعات بیشتر</a>
         </div>
       </div>
     `;
