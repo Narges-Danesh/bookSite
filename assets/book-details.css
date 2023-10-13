@@ -41,7 +41,7 @@
   opacity: 1;
 }
 .book-tabs .tab-content {
-  opacity: 0;
+  display: none;
   padding: 10px;
   border: 2px solid var(--main-theme);
   border-radius: 6px 0 6px 6px;
@@ -51,19 +51,12 @@
   position: relative;
 }
 .book-tabs .tab-content.active {
-  opacity: 1;
+  display: block;
 }
 .details-book-desc {
   padding: 10px;
   text-align: justify;
   font-size: 0.9rem;
-}
-.book-tabs .contents .info-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  left: 0;
 }
 .book-tabs .contents .info-list {
   list-style-type: none;

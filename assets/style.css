@@ -556,7 +556,7 @@ button.call-to-action:hover {
 }
 .book .book-desc .price {
   font-size: 1.2rem;
-  color: var(--main-theme-2);
+  color: var(--price-color);
 }
 .dragging {
   user-select: none;
