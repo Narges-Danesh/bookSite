@@ -1,6 +1,7 @@
 const bookCartWrapper = document.getElementById("book-cart");
 const cartBooks = document.getElementById("cart-books");
 const emptyNote = document.getElementById("empty-note");
+const deleteAll = document.getElementById("delete-all-books");
 let detailsPage = false;
 
 addEventListener("DOMContentLoaded", () => cartBlueCircle());
@@ -9,9 +10,11 @@ function emptyNoteFunction() {
   if (basketItems.length == 0) {
     bookCartWrapper.style.display = "none";
     emptyNote.style.display = "flex";
+    deleteAll.style.display = "none";
   } else {
     bookCartWrapper.style.display = "grid";
     emptyNote.style.display = "none";
+    deleteAll.style.display = "block";
   }
 }
 emptyNoteFunction();
@@ -21,13 +24,12 @@ if (basket.length !== 0) {
   basket.map((x) => {
     let { id, item } = x;
     let search = allBooksArray.find((y) => y.id === id) || [];
-    console.log(basket);
     if (search !== undefined) {
-      let { img, title, price } = search;
+      let { img, title, price, type } = search;
       cartBooks.innerHTML += `
 <li class="cart-book" id="b${id}">
-  <a href="#"><img src="images/books/${img}" alt="" /></a>
-  <div class="cart-book-title">${title}</div>
+  <a href="book-details.html?id=details-${id}&type=${type}"><img src="images/books/${img}" alt="" /></a>
+  <a href="book-details.html?id=details-${id}&type=${type}"><div class="cart-book-title">${title}</div></a>
   <div class="cart-book-price">${price.toLocaleString()}</div>
   <div class="cart-book-quantity">
     <i  onclick="increment(${id})" class="fas fa-plus"></i>
@@ -43,7 +45,6 @@ if (basket.length !== 0) {
     }
   });
 }
-
 bookCartWrapper.innerHTML += `
 <div class="checkout-section">
 <h5>مجموع سفارش شما</h5>
@@ -71,14 +72,15 @@ const trashIcons = document.querySelectorAll(".fa-trash");
 const areYouSure = document.getElementById("are-you-sure");
 const areYouSureButtons = document.querySelectorAll("button");
 overlay.addEventListener("click", () => (areYouSure.style.display = "none"));
+let deleteAllConfirmed = false;
 trashIcons.forEach((icon) => {
   icon.addEventListener("click", (e) => {
+    deleteAllConfirmed = false;
     areYouSure.style.display = "flex";
     overlay.style.display = "block";
-    let buttonClicked;
     areYouSureButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        buttonClicked = button.className;
+        let buttonClicked = button.className;
 
         if (buttonClicked == "no") {
           areYouSure.style.display = "none";
@@ -88,7 +90,6 @@ trashIcons.forEach((icon) => {
           let search = basket.findIndex(
             (x) => x.id == thisBook.id.match(/\d+/)[0]
           );
-          console.log();
           basket[search].item = 0;
           calculation();
           basket = basket.filter((x) => x.item !== 0);
@@ -109,25 +110,22 @@ trashIcons.forEach((icon) => {
   });
 });
 totalPriceShow();
-
 // =========================== DELETE ALL =============================
-const deleteAll = document.getElementById("delete-all-books");
 deleteAll.addEventListener("click", () => {
+  deleteAllConfirmed = true;
   areYouSure.style.display = "flex";
   overlay.style.display = "block";
-  let buttonClicked;
   areYouSureButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      buttonClicked = button.className;
+      let buttonClicked = button.className;
 
       if (buttonClicked == "no") {
         areYouSure.style.display = "none";
         overlay.style.display = "none";
-      } else if (buttonClicked == "yes") {
+      } else if (buttonClicked == "yes" && deleteAllConfirmed) {
         basket = [];
         localStorage.setItem("data", JSON.stringify(basket));
         emptyNoteFunction();
-        deleteAll.style.display = "none";
         areYouSure.style.display = "none";
         overlay.style.display = "none";
         cartIcon.innerHTML = 0;

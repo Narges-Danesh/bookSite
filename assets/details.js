@@ -106,7 +106,6 @@ if (thisBook) {
         descContent.classList.add("active");
         infoContent.classList.remove("active");
       }
-      // console.log(hasInfoClass);
     });
   });
 

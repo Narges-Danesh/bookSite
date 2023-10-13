@@ -72,6 +72,9 @@
   margin-top: 10px;
 }
 /* ====================== BOOK BUTTONS ========================== */
+.book-details .buttons {
+  width: 100%;
+}
 .book-details .buttons button {
   border-radius: 6px;
   border: none;
@@ -107,7 +110,7 @@
   display: flex;
 }
 .book-details .buttons div i {
-  padding: 10px 25px;
+  padding: 10px 15px;
 }
 .book-details .buttons div .fa-plus {
   background-color: green;
@@ -131,8 +134,9 @@
   .book-details {
     gap: 10px;
     align-items: center;
+    width: 100%;
   }
   .details-book-desc {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 }

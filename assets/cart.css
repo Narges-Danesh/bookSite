@@ -165,6 +165,9 @@
     border-block-end: 2px solid var(--input-bg);
     border-block-start: 2px solid var(--input-bg);
   }
+  #cart-books .cart-book div {
+    text-align: center;
+  }
 }
 @media screen and (max-width: 700px) {
   #book-cart {
@@ -185,7 +188,9 @@
   #cart-books .cart-book {
     grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
   }
-  #cart-books .cart-book div {
-    text-align: center;
+}
+@media screen and (max-width: 550px) {
+  #are-you-sure {
+    width: 80%;
   }
 }

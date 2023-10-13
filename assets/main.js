@@ -21,13 +21,13 @@ const closeIcon = document.querySelector(".fa-close");
 const menuList = document.querySelector(".burger-menu-list");
 
 menuIcon.addEventListener("click", () => {
-  menuList.style.width = "30%";
+  menuList.style.transform = "translateX(0)";
   overlay.style.display = "block";
 });
 closeIcon.addEventListener("click", closeIconFunc);
 
 function closeIconFunc() {
-  menuList.style.width = "0";
+  menuList.style.transform = "translateX(100%)";
   overlay.style.display = "none";
 }
 
@@ -107,10 +107,8 @@ if (userSelectedMode) {
 } else {
   document.body.classList.remove("dark-mode-variables");
 }
-
 // add the dark mode
 let darkModeOn = false;
-
 darkMode.addEventListener("click", () => {
   let condition = document.body.classList.contains("dark-mode-variables");
   condition ? (darkModeOn = false) : (darkModeOn = true);
@@ -119,7 +117,6 @@ darkMode.addEventListener("click", () => {
 });
 
 //====================  Book Slider ==============
-// Popular Books
 const popularBookData = [
   {
     title: "تحصیلات مرگبار",
@@ -299,7 +296,6 @@ const popularBookData = [
     id: 8788,
   },
 ];
-// New Books
 const newBookData = [
   {
     title: "نیلوفر و مرداب",
@@ -445,19 +441,24 @@ const newBookData = [
   },
 ];
 const allBooksArray = [...popularBookData, ...newBookData];
+popularBookData.forEach((book) => (book.type = "popular"));
+newBookData.forEach((book) => (book.type = "new"));
 
 // Generating Book Links
 function generateBooksInDOM(array, where, type) {
   array.map((book) => {
-    let { img, title, stars, id } = book;
+    let { img, title, stars, id, price } = book;
 
     where.innerHTML += `
       <div class="book" id="${id}">
-        <img src="images/books/${img}" alt="" draggable="false"/>
+      <a href="book-details.html?id=${id}&type=${type}" target="_blank"> 
+      <img src="images/books/${img}" alt="" draggable="false"/>
+      </a>
         <div class="book-desc">
           <span class="book-title">${title}</span>
+          <div class="price">${price.toLocaleString()}</div>
           <div class="stars">${stars}</div>
-          <a href="#" class="book-details" id="details-${id}" data-type='${type}'>اطلاعات بیشتر</a>
+          <a href="book-details.html?id=${id}&type=${type}" target="_blank" class="book-details">اطلاعات بیشتر</a>
         </div>
       </div>
     `;
@@ -557,31 +558,19 @@ addEventListener("DOMContentLoaded", () => {
   }
   sliderFunction(popularBooks);
   sliderFunction(newBooks);
-});
-
-// Book Hover Effect
-window.addEventListener("DOMContentLoaded", bookHoverEffect);
-function bookHoverEffect() {
-  const allBooks = document.querySelectorAll(".book");
-  allBooks.forEach((book) => {
-    book.addEventListener("mouseenter", (e) => {
-      e.target.classList.add("selected");
+  // Book Hover Effect
+  function bookHoverEffect() {
+    const allBooks = document.querySelectorAll(".book");
+    allBooks.forEach((book) => {
+      book.addEventListener("mouseenter", (e) => {
+        e.target.classList.add("selected");
+      });
+      book.addEventListener("mouseleave", (e) => {
+        e.target.classList.remove("selected");
+      });
     });
-    book.addEventListener("mouseleave", (e) => {
-      e.target.classList.remove("selected");
-    });
-  });
-}
-
-const bookDetailLinks = document.querySelectorAll(".book-details");
-
-bookDetailLinks.forEach((link) => {
-  link.addEventListener("click", (event) => {
-    event.preventDefault();
-    const bookId = link.id;
-    const bookType = link.getAttribute("data-type");
-    window.location.href = `book-details.html?id=${bookId}&type=${bookType}`;
-  });
+  }
+  bookHoverEffect();
 });
 const urlParams = new URLSearchParams(window.location.search);
 
@@ -593,8 +582,8 @@ function cartBlueCircle() {
     cartIcon.style.display = "flex";
   }
 }
+addEventListener("DOMContentLoaded", cartBlueCircle);
 
-addEventListener("DOMContentLoaded", () => cartBlueCircle());
 let increment = (id) => {
   let search = basket.find((x) => x.id === id);
   if (search === undefined) {
@@ -610,12 +599,16 @@ let increment = (id) => {
   update(id);
   localStorage.setItem("data", JSON.stringify(basket));
 };
-
 let decrement = (id) => {
   let search = basket.find((x) => x.id === id);
   if (search === undefined) return;
-  else if (search.item === 1) return;
-  else {
+  else if (!detailsPage) {
+    if (search.item === 1) return;
+    else {
+      search.item -= 1;
+      cartBlueCircle();
+    }
+  } else {
     search.item -= 1;
     cartBlueCircle();
   }
@@ -624,7 +617,6 @@ let decrement = (id) => {
   basket = basket.filter((x) => x.item !== 0);
   localStorage.setItem("data", JSON.stringify(basket));
 };
-
 let update = (id) => {
   let search = basket.find((x) => x.id === id);
   let span = document.getElementById(`count-${id}`);
@@ -652,7 +644,6 @@ let update = (id) => {
 
   calculation(id);
 };
-
 function totalPriceShow() {
   let sum = 0;
   basket.forEach((item) => {
