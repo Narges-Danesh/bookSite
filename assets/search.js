@@ -10,7 +10,7 @@ if (navInput !== null) {
     filter.forEach((book) => {
       const { img, title, price, id, type } = book;
       searchWrapper.innerHTML += `
-  <a href="book-details.html?id=details-${id}&type=${type}" target="_blank"> 
+  <a href="book-details.html?id=details-${id}&type=${type}"> 
   <div class="book-card">
     <img src="images/books/${img}" alt="book-cover" />
     <div class="title">${title}</div>
