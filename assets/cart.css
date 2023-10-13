@@ -22,8 +22,8 @@
   justify-content: space-between;
 }
 .checkout-section button {
-  background-color: var(--main-theme-2);
-  border: 2px solid var(--main-theme-2);
+  background-color: var(--price-color);
+  border: 2px solid var(--price-color);
   color: black;
   padding: 5px 0;
   width: 100%;
@@ -31,8 +31,8 @@
 }
 .checkout-section button:hover {
   background-color: transparent;
-  border: 2px solid var(--main-theme-2);
-  color: var(--main-theme-2);
+  border: 2px solid var(--price-color);
+  color: var(--price-color);
 }
 #cart-books {
   padding: 5px 20px;
@@ -116,11 +116,11 @@
   z-index: 100;
 }
 #are-you-sure button {
-  border: 2px solid var(--main-theme-2);
+  border: 2px solid var(--price-color);
   background-color: transparent;
   border-radius: 6px;
   padding: 6px 18px;
-  color: var(--main-theme-2);
+  color: var(--price-color);
   transition: all 0.3s;
 }
 #are-you-sure button.yes {
@@ -128,7 +128,7 @@
   color: rgb(240, 84, 79);
 }
 #are-you-sure button.no:hover {
-  background-color: var(--main-theme-2);
+  background-color: var(--price-color);
   color: black;
 }
 #are-you-sure button.yes:hover {

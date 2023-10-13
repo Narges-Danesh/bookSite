@@ -6,11 +6,10 @@ if (navInput !== null) {
     let title = book.title.toLowerCase();
     return title.includes(navInput);
   });
-  console.log(filter);
-
-  filter.forEach((book) => {
-    const { img, title, price, id, type } = book;
-    searchWrapper.innerHTML += `
+  if (filter.length > 0) {
+    filter.forEach((book) => {
+      const { img, title, price, id, type } = book;
+      searchWrapper.innerHTML += `
   <a href="book-details.html?id=details-${id}&type=${type}" target="_blank"> 
   <div class="book-card">
     <img src="images/books/${img}" alt="book-cover" />
@@ -19,7 +18,10 @@ if (navInput !== null) {
   </div>
 </a>
   `;
-  });
+    });
+  } else {
+    searchWrapper.innerHTML = `موردی یافت نشد.`;
+  }
 } else {
   searchWrapper.innerHTML = "نتیجه‌ای یافت نشد";
 }

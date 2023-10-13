@@ -99,6 +99,17 @@ function validateEmail(email) {
 }
 
 // ============== Dark and Light Mode ==================
+// add the dark mode
+let darkModeOn = true;
+document.body.classList.add("dark-mode-variables");
+
+darkMode.addEventListener("click", () => {
+  let condition = document.body.classList.contains("dark-mode-variables");
+  condition ? (darkModeOn = false) : (darkModeOn = true);
+  document.body.classList.toggle("dark-mode-variables");
+  localStorage.setItem("darkMode", darkModeOn);
+});
+
 // Get from local storage
 let userSelectedMode = JSON.parse(localStorage.getItem("darkMode"));
 
@@ -107,14 +118,6 @@ if (userSelectedMode) {
 } else {
   document.body.classList.remove("dark-mode-variables");
 }
-// add the dark mode
-let darkModeOn = false;
-darkMode.addEventListener("click", () => {
-  let condition = document.body.classList.contains("dark-mode-variables");
-  condition ? (darkModeOn = false) : (darkModeOn = true);
-  document.body.classList.toggle("dark-mode-variables");
-  localStorage.setItem("darkMode", darkModeOn);
-});
 
 //====================  Book Slider ==============
 const popularBookData = [
@@ -451,7 +454,7 @@ function generateBooksInDOM(array, where, type) {
 
     where.innerHTML += `
       <div class="book" id="${id}">
-      <a href="book-details.html?id=${id}&type=${type}" target="_blank"> 
+      <a href="book-details.html?id=${id}&type=${type}" target="_blank" draggable="false"> 
       <img src="images/books/${img}" alt="" draggable="false"/>
       </a>
         <div class="book-desc">
@@ -469,7 +472,6 @@ generateBooksInDOM(newBookData, newBooks, "new");
 
 addEventListener("DOMContentLoaded", () => {
   function sliderFunction(whereto) {
-    const sliderImages = whereto.querySelectorAll("img");
     const arrowButtons =
       whereto.parentElement.parentElement.querySelectorAll(".arrow");
     const firstCardWidth = whereto.querySelector(".book").offsetWidth;
@@ -486,9 +488,6 @@ addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // make images undraggable
-    sliderImages.forEach((image) => (image.draggable = false));
-
     // dragging the slider
     let isDragging = false,
       startX,
@@ -496,20 +495,31 @@ addEventListener("DOMContentLoaded", () => {
       timeoutID;
 
     const dragStart = (e) => {
-      isDragging = true;
-      startX = e.pageX;
-      startScrollLeft = whereto.scrollLeft;
-      whereto.classList.add("dragging");
+      setTimeout(() => {
+        isDragging = true;
+        startX = e.pageX;
+        startScrollLeft = whereto.scrollLeft;
+        whereto.classList.add("dragging");
+      }, 100);
     };
     const dragging = (e) => {
       if (!isDragging) return;
       whereto.scrollLeft = startScrollLeft - (e.pageX - startX);
     };
     const dragStop = () => {
-      isDragging = false;
-      whereto.classList.remove("dragging");
+      setTimeout(() => {
+        isDragging = false;
+        whereto.classList.remove("dragging");
+      }, 100);
     };
-
+    let thisTag = document.querySelectorAll(".book a");
+    thisTag.forEach((tag) => {
+      tag.addEventListener("click", (e) => {
+        if (isDragging) {
+          e.preventDefault();
+        }
+      });
+    });
     // infinite scroll
     const sliderChildren = [...whereto.children];
     let cardPerView = Math.round(whereto.offsetWidth / firstCardWidth);
@@ -684,9 +694,12 @@ calculation();
 // search
 const searchSection = document.querySelector(".search-section");
 const searchInput = document.getElementById("search-field");
-searchSection.addEventListener("submit", (e) => {
+const searchIcon = document.querySelector(".search-icon");
+searchIcon.addEventListener("click", (e) => submitSearch(e));
+searchSection.addEventListener("submit", (e) => submitSearch(e));
+function submitSearch(e) {
   e.preventDefault();
   let value = searchInput.value.toLowerCase();
   window.location.href = `search.html?search=${value}`;
   searchInput.value = "";
-});
+}

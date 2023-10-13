@@ -446,7 +446,6 @@ button.call-to-action:hover {
 }
 
 /* ========================= BOOKS SECTION ============================= */
-
 .book-section {
   padding: 50px 0;
 }
@@ -507,6 +506,7 @@ button.call-to-action:hover {
   align-items: center;
   scroll-snap-align: center;
   transition: all 0.3s;
+  user-select: none;
 }
 .book img {
   width: 180px;
@@ -961,9 +961,13 @@ footer {
     padding: 20px;
   }
   .book-card {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   .book-card img {
-    height: 150px;
+    height: 200px;
+  }
+  .book-card .title {
+    display: flex;
+    align-items: center;
   }
 }
