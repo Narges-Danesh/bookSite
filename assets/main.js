@@ -581,6 +581,9 @@ addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+   if (window.innerWidth > 700) {
+      bookHoverEffect();
+    } 
   addEventListener("resize", () => {
     if (window.innerWidth > 700) {
       bookHoverEffect();
